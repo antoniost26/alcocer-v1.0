@@ -1,6 +1,6 @@
 .env
 node_modules
-./src_outdated
+src_outdated
 package_backup.json
 src/commands/moderation/ban.js
 package-lock.json
