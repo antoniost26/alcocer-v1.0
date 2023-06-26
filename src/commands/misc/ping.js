@@ -7,6 +7,6 @@ module.exports = {
   // deleted: Boolean,
 
   callback: (client, interaction) => {
-    interaction.reply(`Hey there! Current ${client.user.tag} ping is: ${client.ws.ping}ms`);
+    interaction.reply({ content: `Hey there! Current ${client.user.tag} ping is: ${client.ws.ping}ms`, ephemeral: true });
   },
 };
