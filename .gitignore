@@ -1,0 +1,5 @@
+.env
+node_modules
+./src_outdated
+package_backup.json
+src/commands/moderation/ban.js
