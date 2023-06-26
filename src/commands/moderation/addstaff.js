@@ -6,7 +6,6 @@ const {
 
 module.exports = {
     callback: async (client, interaction) => {
-        console.log(interaction);
         await interaction.deferReply();
         const targetUser = interaction.options.getMember('target-user');
 
