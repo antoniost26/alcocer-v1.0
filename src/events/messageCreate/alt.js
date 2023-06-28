@@ -43,9 +43,14 @@ module.exports = async (client, message) => {
     const targetId = args.at(1).trim();
 
     let findUser = await client.users.fetch(targetId).catch(error=>{
-      message.channel.send(`Invalid id ${targetId}. Try running with a valid id.`);
+      console.log('invalid id');
       return;
     })
+
+    if (findUser === undefined) {
+      message.channel.send(`Invalid id ${inlineCode(targetId)}. Try running with a valid id.`);
+      return;
+    }
 
     // await message.channel.send(
     //   `Cannot unveil alts for taget id ${inlineCode(
