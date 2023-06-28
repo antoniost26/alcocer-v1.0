@@ -1,6 +1,7 @@
 const { Client, Message, inlineCode } = require("discord.js");
 require("dotenv").config();
 const altAccount = require("../../models/altAccount");
+const cooldowns = [];
 
 /**
  *
@@ -27,6 +28,8 @@ module.exports = async (client, message) => {
       process.env.COMMAND_PREFIX.length + command.length
     ) == command
   ) {
+    if (cooldowns.includes(message.author.id)) return;
+
     const args = message.content.split(" ");
 
     if (args.length != 2) {
@@ -93,5 +96,9 @@ module.exports = async (client, message) => {
         `Error searching alts for ${inlineCode(targetId)}:\n ${error}`
       );
     }
+    cooldowns.push(message.author.id);
+    setTimeout(() => {
+      cooldowns.pop(message.author.id);
+    }, 10000);
   }
 };
