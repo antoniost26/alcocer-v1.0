@@ -54,10 +54,14 @@ module.exports = async (client, message) => {
     const altQuery = {
       altAccount: targetId,
     };
+    console.log (mainQuery + '  - ' + targetId);
+    console.log (altQuery + '  - ' + targetId);
 
     try {
       const mainAccountDetections = await altAccount.find(mainQuery);
+      console.log(mainAccountDetections);
       const altAccountDetections = await altAccount.find(altQuery);
+      console.log(altAccountDetections);
       const allAccountDetections =
         mainAccountDetections.concat(altAccountDetections);
 
