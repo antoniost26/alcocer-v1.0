@@ -10,6 +10,13 @@ const altAccount = require("../../models/altAccount");
 module.exports = async (client, message) => {
   if (!message.inGuild || message.author.bot) return;
   if (!message.content.startsWith(process.env.COMMAND_PREFIX)) return;
+  if (
+    !(
+      message.guildId === "829600493398786078" ||
+      message.guildId === "1119350182346244178"
+    )
+  )
+    return;
 
   const command = "alt";
   const syntax = process.env.COMMAND_PREFIX + command + " <id>";
@@ -42,21 +49,18 @@ module.exports = async (client, message) => {
 
     const targetId = args.at(1).trim();
 
-    let findUser = await client.users.fetch(targetId).catch(error=>{
-      console.log('invalid id');
+    let findUser = await client.users.fetch(targetId).catch((error) => {
+      console.log("invalid id");
       return;
-    })
+    });
 
     if (findUser === undefined) {
-      message.channel.send(`Invalid id ${inlineCode(targetId)}. Try running with a valid id.`);
+      message.channel.send(
+        `Invalid id ${inlineCode(targetId)}. Try running with a valid id.`
+      );
       return;
     }
 
-    // await message.channel.send(
-    //   `Cannot unveil alts for taget id ${inlineCode(
-    //     targetId
-    //   )}, process is under construction.`
-    // );
     const mainQuery = {
       mainAccount: targetId,
     };
@@ -64,18 +68,13 @@ module.exports = async (client, message) => {
     const altQuery = {
       altAccount: targetId,
     };
-    console.log (mainQuery + '  - ' + targetId);
-    console.log (altQuery + '  - ' + targetId);
 
     try {
       const mainAccountDetections = await altAccount.find(mainQuery);
-      console.log(mainAccountDetections);
       const altAccountDetections = await altAccount.find(altQuery);
-      console.log(altAccountDetections);
-      const allAccountDetections =
-        [...new Set([...mainAccountDetections,...altAccountDetections])];
-
-      console.log(allAccountDetections);
+      const allAccountDetections = [
+        ...new Set([...mainAccountDetections, ...altAccountDetections]),
+      ];
 
       if (allAccountDetections.length <= 0) {
         await message.channel.send({
