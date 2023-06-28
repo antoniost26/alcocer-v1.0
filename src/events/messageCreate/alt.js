@@ -99,6 +99,6 @@ module.exports = async (client, message) => {
     cooldowns.push(message.author.id);
     setTimeout(() => {
       cooldowns.pop(message.author.id);
-    }, 10000);
+    }, 6000);
   }
 };
