@@ -63,9 +63,11 @@ module.exports = async (client, message) => {
       const altAccountDetections = await altAccount.find(altQuery);
       console.log(altAccountDetections);
       const allAccountDetections =
-        [...new Set([...mainAccountDetections,...altAccountDetections])]
+        [...new Set([...mainAccountDetections,...altAccountDetections])];
 
-      if (altAccountDetections.length <= 0) {
+      console.log(allAccountDetections);
+
+      if (allAccountDetections.length <= 0) {
         await message.channel.send({
           content: `No alt intrusions found with id ${inlineCode(targetId)}`,
         });
