@@ -89,7 +89,7 @@ module.exports = async (client, message) => {
         });
         return;
       }
-
+      console.log(messageLink.split("/").at(3));
       await message.channel.send({
         content: `Found following alt intrusions for id ${inlineCode(
           targetId
