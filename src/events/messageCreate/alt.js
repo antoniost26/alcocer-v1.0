@@ -41,7 +41,7 @@ module.exports = async (client, message) => {
 
     const args = message.content.split(" ");
 
-    if (args.length < 2) {
+    if (args.length < 2 && !message.mentions.repliedUser) {
       await message.channel.send(
         `Invalid syntax running command ${inlineCode(
           process.env.COMMAND_PREFIX + command
