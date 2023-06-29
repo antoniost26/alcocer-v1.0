@@ -1,5 +1,5 @@
 {
-  "testServer": "1056016430098813009",
+  "testServer": "1119350182346244178",
   "clientId": "112373512268494438",
   "devs": ["535898109184573451"],
   "commandWhitelist": [
@@ -17,5 +17,6 @@
     "959199524264505366": "asuri",
     "808227746660614165": "keion",
     "905744782243033159": "zeruel"
-  }
+  },
+  "messageLinkTemplate": "https://discord.com/channels/<guild-id>/<channel-id>/<message-id>"
 }
