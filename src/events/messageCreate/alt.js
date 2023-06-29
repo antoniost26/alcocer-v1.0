@@ -89,17 +89,16 @@ module.exports = async (client, message) => {
         });
         return;
       }
-      console.log(messageLink.split("/").at(3));
       await message.channel.send({
         content: `Found following alt intrusions for id ${inlineCode(
           targetId
         )}\n${allAccountDetections
-          .map(
-            (alt) =>
-              `${serverNames[alt.messageLink.split("/").at(3)]} - ${
-                alt.messageLink
-              }`
-          )
+          .map((alt) => {
+            console.log(messageLink.split("/").at(3));
+            return `${serverNames[alt.messageLink.split("/").at(3)]} - ${
+              alt.messageLink
+            }`;
+          })
           .join("\n")}`,
       });
     } catch (error) {
