@@ -1,7 +1,6 @@
 const { Schema, model } = require("mongoose");
 
 const altSchema = new Schema({
-  _id: Schema.Types.ObjectId,
   mainAccount: {
     type: String,
     required: true,

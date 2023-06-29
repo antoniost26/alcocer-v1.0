@@ -4,3 +4,5 @@ src_outdated
 package_backup.json
 src/commands/moderation/ban.js
 package-lock.json
+src/commands/misc/sendMessage.js
+src/models/testAltAccount.js
