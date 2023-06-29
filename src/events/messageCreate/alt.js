@@ -19,6 +19,7 @@ module.exports = async (client, message) => {
     )
   )
     return;
+  if (message.content.length > 100) return;
 
   const command = "alt";
   const syntax = process.env.COMMAND_PREFIX + command + " <id>";
