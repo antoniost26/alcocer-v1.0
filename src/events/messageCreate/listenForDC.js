@@ -37,6 +37,7 @@ module.exports = async (client, message) => {
       messageLink,
     });
     await newAlt.save();
+    console.log(`Added alt ${mainAccount}`);
   } catch (error) {
     console.log(`Error saving alt ${error}`);
   }
