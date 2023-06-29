@@ -2,6 +2,7 @@ const { Client, Message, inlineCode } = require("discord.js");
 require("dotenv").config();
 const altAccount = require("../../models/altAccount");
 const cooldowns = [];
+const { commandWhitelist } = require("../../../config.json");
 
 /**
  *
@@ -29,7 +30,14 @@ module.exports = async (client, message) => {
     ) == command
   ) {
     if (cooldowns.includes(message.author.id)) return;
-    if (!message.member.roles.cache.some(role => role.id === "883746079718379581")) return;
+    if (
+      !message.member.roles.cache.some(
+        (role) =>
+          role.id === "883746079718379581" || role.id === "1069064906286043136"
+      ) &&
+      !commandWhitelist.includes(message.member.id)
+    )
+      return;
 
     const args = message.content.split(" ");
 
@@ -41,19 +49,11 @@ module.exports = async (client, message) => {
       );
       return;
     }
-
-    //if (!/^[0-9]*$/.test(args.at(1))) {
-      //await message.channel.send(
-        //`Command ${inlineCode(
-          //process.env.COMMAND_PREFIX + command
-        //)} uses ids with digits only. Try running it again with a valid id.`
-      //);
-      //return;
-   // }
-    let targetId
-    if (message.mentions.members.first()) targetId = message.mentions?.members.first().id;
-        else targetId = args.at(1).trim();
-//    const targetId = message?.mentions?.members.at(0).id? message?.mentions?.members.at(0).id : args.at(1).trim();
+    const targetId = message.mentions.repliedUser
+      ? message.mentions.repliedUser.id
+      : message.mentions.members.first()
+      ? message.mentions.members.first().id
+      : args.at(1).trim();
 
     let findUser = await client.users.fetch(targetId).catch((error) => {
       console.log("invalid id");
