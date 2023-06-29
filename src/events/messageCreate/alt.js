@@ -94,12 +94,12 @@ module.exports = async (client, message) => {
         content: `Found following alt intrusions for id ${inlineCode(
           targetId
         )}\n${allAccountDetections
-          .map((alt) => {
-            console.log(alt.messageLink.split("/").at(3));
-            return `${serverNames[alt.messageLink.split("/").at(3)]} - ${
-              alt.messageLink
-            }`;
-          })
+          .map(
+            (alt) =>
+              `${serverNames[alt.messageLink.split("/").at(4)]} - ${
+                alt.messageLink
+              }`
+          )
           .join("\n")}`,
       });
     } catch (error) {
