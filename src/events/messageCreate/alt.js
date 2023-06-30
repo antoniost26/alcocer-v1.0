@@ -91,23 +91,15 @@ module.exports = async (client, message) => {
       }
 
       await message.channel.send({
-        content: args.includes('-l')?`Found following alt intrusions for id ${inlineCode(
+        content: `Found following alt intrusions for id ${inlineCode(
           targetId
         )}\n${allAccountDetections
           .map(
             (alt) =>
               `${messageTemplate.replace("", alt.mainAccount).replace("", alt.altAccount)
-              }\n${alt.messageLink}`
+              }\n${args.includes("-l"?alt.messageLink:'')}`
           )
           .join("\n")}`
-          :`Found following alt intrusions for id ${inlineCode(
-            targetId
-          )}\n${allAccountDetections
-            .map(
-              (alt) =>
-                `${messageTemplate.replaceAll("<main-account>", alt.mainAccount).replaceAll("<alt-account>", alt.altAccount)}`
-            )
-            .join("\n")}`
       });
     } catch (error) {
       console.log(
