@@ -2,7 +2,7 @@ const { Client, Message, inlineCode } = require("discord.js");
 require("dotenv").config();
 const altAccount = require("../../models/altAccount");
 const cooldowns = [];
-const { commandWhitelist, serverNames } = require("../../../config.json");
+const { commandWhitelist, serverNames, messageTemplate } = require("../../../config.json");
 
 /**
  *
@@ -91,16 +91,24 @@ module.exports = async (client, message) => {
       }
 
       await message.channel.send({
-        content: `Found following alt intrusions for id ${inlineCode(
+        content: args.includes('-l')?`Found following alt intrusions for id ${inlineCode(
           targetId
         )}\n${allAccountDetections
           .map(
             (alt) =>
-              `${serverNames[alt.messageLink.split("/").at(4)]} - ${
-                alt.messageLink
-              }`
+              `${messageTemplate.replace("", alt.mainAccount).replace("", alt.altAccount)
+              }\n${alt.messageLink}`
           )
-          .join("\n")}`,
+          .join("\n")}`
+          :`Found following alt intrusions for id ${inlineCode(
+            targetId
+          )}\n${allAccountDetections
+            .map(
+              (alt) =>
+                `${messageTemplate.replace("<main-account>", alt.mainAccount).replace("<alt-account>", alt.altAccount)}
+                }`
+            )
+            .join("\n")}`
       });
     } catch (error) {
       console.log(
