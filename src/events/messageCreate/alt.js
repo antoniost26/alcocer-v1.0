@@ -97,7 +97,7 @@ module.exports = async (client, message) => {
           .map(
             (alt) =>
               `${messageTemplate.replaceAll("<main-account>", alt.mainAccount).replaceAll("<alt-account>", alt.altAccount)
-              }\n${args.includes("-l"?alt.messageLink:'')}`
+              }\n${args.includes("-l")?alt.messageLink:''}`
           )
           .join("\n")}`
       });
