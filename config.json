@@ -20,5 +20,5 @@
     "1074571278935138317": ".gg/anemo (GITD)"
   },
   "messageLinkTemplate": "https://discord.com/channels/<guild-id>/<channel-id>/<message-id>",
-  "messageTemplate": ":small_red_triangle: Alt-account intrusion attempt detected : <@<alt-account>> (<alt-account>) - Main account : <@<main-account>> (<main-account>)"
+  "messageTemplate": ":KSFalert: Alt-account intrusion detected\nalt-account: <@<alt-account>> (${inlineCode(<alt-account>)}); main account : <@<main-account>> (${inlineCode(<main-account>)})"
 }
