@@ -96,7 +96,7 @@ module.exports = async (client, message) => {
         )}\n${allAccountDetections
           .map(
             (alt) =>
-              `${messageTemplate.replace("", alt.mainAccount).replace("", alt.altAccount)
+              `${messageTemplate.replaceAll("<main-account>", alt.mainAccount).replace("<alt-account>", alt.altAccount)
               }\n${args.includes("-l"?alt.messageLink:'')}`
           )
           .join("\n")}`
