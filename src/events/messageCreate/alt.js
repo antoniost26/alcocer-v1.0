@@ -89,8 +89,18 @@ module.exports = async (client, message) => {
         });
         return;
       }
-
-      await message.channel.send({
+      message.channel.id === "877262022545383495"
+      ?await message.channel.send({
+        content: `Found following alt intrusions for id ${inlineCode(
+        targetId
+      )}\n${allAccountDetections
+        .map(
+          (detection) =>
+            `${serverNames[detection.messageLink.split("/").at(4)]?"": serverNames[detection.messageLink.split("/").at(4)] + " - "}${detection.messageLink}`
+        )
+        .join("\n")}`
+    })
+      :await message.channel.send({
         content: `Found following alt intrusions for id ${inlineCode(
           targetId
         )}\n${allAccountDetections
