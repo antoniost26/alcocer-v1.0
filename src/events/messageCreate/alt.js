@@ -96,7 +96,7 @@ module.exports = async (client, message) => {
       )}\n${allAccountDetections
         .map(
           (detection) =>
-            `${serverNames[detection.messageLink.split("/").at(4)]?"": serverNames[detection.messageLink.split("/").at(4)] + " - "}${detection.messageLink}`
+            `${serverNames[detection.messageLink.split("/").at(4)]?serverNames[detection.messageLink.split("/").at(4)] + " - " : ""}${detection.messageLink}`
         )
         .join("\n")}`
     })
