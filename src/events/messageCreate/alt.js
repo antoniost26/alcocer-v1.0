@@ -90,7 +90,7 @@ module.exports = async (client, message) => {
         return;
       }
       message.channel.send(`${message.channel.parentId}`);
-      message.channel.parentIdid === "877262022545383495"
+      message.channel.parentId === "877262022545383495"
       ?await message.channel.send({
         content: `Found following alt intrusions for id ${inlineCode(
         targetId
