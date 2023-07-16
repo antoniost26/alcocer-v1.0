@@ -21,5 +21,5 @@
   },
   "messageLinkTemplate": "https://discord.com/channels/<guild-id>/<channel-id>/<message-id>",
   "messageTemplate": ":small_red_triangle: Alt-account intrusion attempt detected : <@<alt-account>> (<alt-account>) - Main account : <@<main-account>> (<main-account>)",
-  "scammersIdChannelId": "839537894523666433"
+  "scammersIdChannelId": "123123"
 }
