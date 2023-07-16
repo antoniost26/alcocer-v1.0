@@ -19,7 +19,7 @@ module.exports = async (client, message) => {
     )
         return;
     if (message.content.length > 100) return;
-    if (!message.channelId === scammersIdChannelId) return;
+    if (!(message.channelId === scammersIdChannelId)) return;
 
     const command = "construct";
 
