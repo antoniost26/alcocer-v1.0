@@ -44,7 +44,7 @@ module.exports = async (client, message) => {
         )
       );
     }
-    const newMemberId = new scammerIdSchema({ accountId: memberId });
+    const newMemberId = new teamSchema({ accountId: memberId });
     await newMemberId
       .save()
       .then(async (result) => {
