@@ -53,7 +53,7 @@ module.exports = async (client, message) => {
         let teamAnno = []; 
         let ind = 1;
         teams.forEach(element => {
-            teamAnno.push(`Team ${ind}:/n${element.map((el) => `<@${el}>`).join(", ")}`)
+            teamAnno.push(`Team ${ind}:\n${element.map((el) => `<@${el}>`).join(", ")}`)
             ind++;
         });
         message.channel.send(`Teams have been generated as following:\n${teamAnno.join("\n-\n")}`);
