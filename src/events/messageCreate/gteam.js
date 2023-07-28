@@ -31,15 +31,15 @@ module.exports = async (client, message) => {
     ) {
         let carr = carries.sort(function() { return 0.5 - Math.random();});
         let rep = reporters.sort(function() { return 0.5 - Math.random();});
-        console.log(carr);
-        console.log(rep);
+        console.log(carr.join(", "));
+        console.log(rep.join(", "));
         for (let i = 1; i < 5; i++)
             rep.sort(function() { return 0.5 - Math.random();});
         let teams = [];
         for (let i = 0; i < 9; i++) {
             teams[i] = [carr.pop()];
         }
-        console.log(teams);
+        console.log(teams.join(", "));
         let i = 0;
         while(rep.length) {
             teams[i] = [...rep.pop()];
@@ -49,7 +49,6 @@ module.exports = async (client, message) => {
                 i++;
             }
         }
-        console.log(teams)
         
         let teamAnno = []; 
         let ind = 1;
