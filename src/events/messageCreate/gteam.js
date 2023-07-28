@@ -29,8 +29,10 @@ module.exports = async (client, message) => {
             process.env.COMMAND_PREFIX.length + command.length
         ) == command
     ) {
-        let carr = carries.sort(function() { return 0.5 - Math.random();});
-        let rep = reporters.sort(function() { return 0.5 - Math.random();});
+        let carr = carries;
+        carr.sort(function() { return 0.5 - Math.random();});
+        let rep = reporters;
+        rep.sort(function() { return 0.5 - Math.random();});
         for (let i = 1; i < 5; i++)
             rep.sort(function() { return 0.5 - Math.random();});
         let teams = [[]];
