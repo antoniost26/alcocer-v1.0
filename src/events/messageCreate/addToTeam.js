@@ -1,5 +1,6 @@
 const { Client, Message, inlineCode } = require("discord.js");
 require("dotenv").config();
+const { devs } = require("../../../config.json");
 const teamSchema = require("../../models/teams.js");
 
 /**
