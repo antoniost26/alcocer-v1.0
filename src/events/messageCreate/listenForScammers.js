@@ -14,7 +14,6 @@ module.exports = async (client, message) => {
     if (!message.content.match(/[\d to be removed]+/gm)) return;
 
     const messageContent = message.content;
-    if (messageContent === "a-construct") {message.delete()};
     let botMessage = [];
     let toDelete = true;
     messageContent.split("\n").forEach(async element => {

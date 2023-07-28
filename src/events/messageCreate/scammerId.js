@@ -41,6 +41,7 @@ module.exports = async (client, message) => {
             let embeds = [];
             chunkedScammerIds.forEach((chunkedScammerId, myindex) => {
                 const exampleEmbed = {
+		    color: 0x2b2d31,
                     title: myindex+1,
                     description: chunkedScammerId.join(" "),
                     footer: {
