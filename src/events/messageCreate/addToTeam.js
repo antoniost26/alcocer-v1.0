@@ -18,7 +18,7 @@ module.exports = async (client, message) => {
     )
   )
     return;
-  if (message.content.length > 100) return;
+  if (message.content.length > 2000) return;
   if (!devs.includes(message.member.id)) return;
 
   const command = "tadd";
