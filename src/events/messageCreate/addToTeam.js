@@ -29,33 +29,35 @@ module.exports = async (client, message) => {
       process.env.COMMAND_PREFIX.length + command.length
     ) == command
   ) {
-    const memberId = message.content.match(/\d+/gm)[0];
-    let findUser = await client.users.fetch(memberId).catch(async (error) => {
-      if (error)
-        await message.reply(`invalid id ${inlineCode(memberId)}: ${error}`);
-      return;
-    });
-    if (findUser === undefined) return;
-
-    if (await teamSchema.findOne({ accountId: memberId })) {
-      botMessage.push(
-        await message.reply(
-          `${inlineCode(memberId)} already exists in team management`
-        )
-      );
-    }
-    const newMemberId = new teamSchema({ accountId: memberId });
-    await newMemberId
-      .save()
-      .then(async (result) => {
-        await message.reply(
-          `pushed ${inlineCode(memberId)} into team management.`
-        );
-      })
-      .catch(async (err) => {
-        await message.reply(
-          `error while adding ${memberId} into team management: ${err}`
-        );
+    const memberIds = message.content.match(/\d+/gm);
+    memberIds.forEach(async (memberId) => {
+      let findUser = await client.users.fetch(memberId).catch(async (error) => {
+        if (error)
+          await message.reply(`invalid id ${inlineCode(memberId)}: ${error}`);
+        return;
       });
+      if (findUser === undefined) return;
+
+      if (await teamSchema.findOne({ accountId: memberId })) {
+        botMessage.push(
+          await message.reply(
+            `${inlineCode(memberId)} already exists in team management`
+          )
+        );
+      }
+      const newMemberId = new teamSchema({ accountId: memberId });
+      await newMemberId
+        .save()
+        .then(async (result) => {
+          await message.reply(
+            `pushed ${inlineCode(memberId)} into team management.`
+          );
+        })
+        .catch(async (err) => {
+          await message.reply(
+            `error while adding ${memberId} into team management: ${err}`
+          );
+        });
+    });
   }
 };

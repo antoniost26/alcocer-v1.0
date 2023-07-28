@@ -30,22 +30,25 @@ module.exports = async (client, message) => {
     ) == command
   ) {
     const memberId = message.content.match(/\d+/gm)[0];
-    let findUser = await client.users.fetch(memberId).catch(async (error) => {
-      if (error)
-        await message.reply(`invalid id ${inlineCode(memberId)}: ${error}`);
-      return;
-    });
-    if (findUser === undefined) return;
+    const memberIds = message.content.match(/\d+/gm);
+    memberIds.forEach(async (memberId) => {
+      let findUser = await client.users.fetch(memberId).catch(async (error) => {
+        if (error)
+          await message.reply(`invalid id ${inlineCode(memberId)}: ${error}`);
+        return;
+      });
+      if (findUser === undefined) return;
 
-    if (await teamSchema.findOne({ accountId: memberId })) {
-      await teamSchema.deleteMany({ accountId: memberId });
-      await message.reply(
-        `removed ${inlineCode(memberId)} from team management.`
-      );
-    } else {
-      await message.reply(
-        `no member with id ${inlineCode(scammerId)} found in team management`
-      );
-    }
+      if (await teamSchema.findOne({ accountId: memberId })) {
+        await teamSchema.deleteMany({ accountId: memberId });
+        await message.reply(
+          `removed ${inlineCode(memberId)} from team management.`
+        );
+      } else {
+        await message.reply(
+          `no member with id ${inlineCode(scammerId)} found in team management`
+        );
+      }
+    });
   }
 };
