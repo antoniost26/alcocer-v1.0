@@ -48,6 +48,7 @@ module.exports = async (client, message) => {
     for (let i = 0; i < teamNumber; i++) {
       teams[i] = carr.length ? [carr.pop()] : [];
     }
+    if (carr.length) rep.concat(carr);
     let i = 0;
     while (rep.length) {
       teams[i].push(rep.pop());
