@@ -35,14 +35,14 @@ module.exports = async (client, message) => {
         console.log(rep.join(", "));
         for (let i = 1; i < 5; i++)
             rep.sort(function() { return 0.5 - Math.random();});
-        let teams = [];
+        let teams = [[]];
         for (let i = 0; i < 9; i++) {
             teams[i] = [carr.pop()];
         }
         console.log(teams.join(", "));
         let i = 0;
         while(rep.length) {
-            teams[i] = [...rep.pop()];
+            teams[i].push(rep.pop());
             if (i == 8) {
                 i = 0;
             } else {
