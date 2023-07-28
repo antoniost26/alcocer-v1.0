@@ -33,7 +33,7 @@ module.exports = async (client, message) => {
         let rep = reporters.sort(function() { return 0.5 - Math.random();});
         for (let i = 1; i < 5; i++)
             rep.sort(function() { return 0.5 - Math.random();});
-        let teams = [[]];
+        let teams = [];
         for (let i = 0; i < 9; i++) {
             teams[i] = [carr.pop()];
         }
