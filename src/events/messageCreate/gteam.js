@@ -21,7 +21,7 @@ module.exports = async (client, message) => {
   if (message.content.length > 100) return;
   if (
     !devs.includes(message.member.id) &&
-    message.author.id != "1007560759846387773"
+    message.member.id != "1007560759846387773"
   )
     return;
 
