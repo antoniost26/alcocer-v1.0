@@ -40,7 +40,6 @@ module.exports = async (client, message) => {
     for await (const r of repp) {
       rep.push(r.accountId);
     }
-    console.log(rep);
     rep.sort(function () {
       return 0.5 - Math.random();
     });
