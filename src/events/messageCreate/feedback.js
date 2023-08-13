@@ -8,6 +8,7 @@ const feedbackSchema = require("../../models/feedback.js");
  * @param {Message} message
  */
 module.exports = async (client, message) => {
+  const command = "feedback";
   if (
     !(
       message.content.substring(
@@ -35,8 +36,6 @@ module.exports = async (client, message) => {
   if (!(message.channel.type == 1) && !isAdmin) return;
   if (!message.content.startsWith(process.env.COMMAND_PREFIX)) return;
   if (message.content.length > 100) return;
-
-  const command = "feedback";
 
   // validations
   let targetUser = isAdmin
