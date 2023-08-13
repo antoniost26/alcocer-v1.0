@@ -35,10 +35,10 @@ module.exports = async (client, message) => {
   ) {
     if (message.content === command) return;
     let teamNumber = message.content.match(/\d+/gm)[0];
-    let carr = [...carries];
-    carr.sort(function () {
-      return 0.5 - Math.random();
-    });
+    // let carr = [...carries];
+    // carr.sort(function () {
+    // return 0.5 - Math.random();
+    // });
     let rep = [];
     const repp = teamSchema.find();
     for await (const r of repp) {
@@ -52,10 +52,10 @@ module.exports = async (client, message) => {
         return 0.5 - Math.random();
       });
     let teams = [[]];
-    for (let i = 0; i < teamNumber; i++) {
-      teams[i] = carr.length ? [carr.pop()] : [];
-    }
-    if (carr.length) rep = [...rep, ...carr];
+    // for (let i = 0; i < teamNumber; i++) {
+    // teams[i] = carr.length ? [carr.pop()] : [];
+    // }
+    // if (carr.length) rep = [...rep, ...carr];
     let i = 0;
     while (rep.length) {
       teams[i].push(rep.pop());
