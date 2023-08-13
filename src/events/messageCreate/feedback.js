@@ -8,8 +8,16 @@ const feedbackSchema = require("../../models/feedback.js");
  * @param {Message} message
  */
 module.exports = async (client, message) => {
+  if (
+    !(
+      message.content.substring(
+        process.env.COMMAND_PREFIX.length,
+        process.env.COMMAND_PREFIX.length + command.length
+      ) == command
+    )
+  )
+    return;
   let isAdmin = false;
-  console.log(message.channel.type);
   if (!(message.channel.type == 1))
     isAdmin = message.member.roles.cache.some((role) =>
       [
@@ -19,7 +27,6 @@ module.exports = async (client, message) => {
         "921064407096754218",
       ].includes(role.id)
     );
-  console.log(isAdmin);
   if (
     !(message.channel.type == 1) &&
     !(message.guildId === "829600493398786078")
@@ -30,16 +37,6 @@ module.exports = async (client, message) => {
   if (message.content.length > 100) return;
 
   const command = "feedback";
-
-  if (
-    !(
-      message.content.substring(
-        process.env.COMMAND_PREFIX.length,
-        process.env.COMMAND_PREFIX.length + command.length
-      ) == command
-    )
-  )
-    return;
 
   // validations
   let targetUser = isAdmin
