@@ -8,6 +8,7 @@ const feedbackSchema = require("../../models/feedback.js");
  * @param {Message} message
  */
 module.exports = async (client, message) => {
+  if (!message.content.startsWith(process.env.COMMAND_PREFIX)) return;
   const command = "feedback";
   if (
     !(
@@ -34,7 +35,6 @@ module.exports = async (client, message) => {
   )
     return;
   if (!(message.channel.type == 1) && !isAdmin) return;
-  if (!message.content.startsWith(process.env.COMMAND_PREFIX)) return;
   if (message.content.length > 100) return;
 
   // validations
@@ -115,7 +115,7 @@ async function constructEmbeds(client, message, targetUser) {
           name: ``,
           value: `Received from ${
             feedback.isAnon ? "Anonymous User" : `<@${feedback.authorId}>`
-          }\n${feedback.feedback}\n${inlineCode("Reference:")}:\n${
+          }:\n${feedback.feedback}\n${inlineCode("Reference:")}\n${
             feedback.messageLink ? feedback.messageLink : "none"
           }`,
           inline: true,
