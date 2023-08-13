@@ -58,7 +58,7 @@ module.exports = async (client, message) => {
     // if (carr.length) rep = [...rep, ...carr];
     let i = 0;
     while (rep.length) {
-      teams[i].push(rep.pop());
+      teams[i] ? teams[i].push(rep.pop()) : (teams[i] = [rep.pop()]);
       if (i == teamNumber - 1) {
         i = 0;
       } else {
