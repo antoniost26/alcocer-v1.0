@@ -10,6 +10,7 @@ const { devs } = require("../../../config.json");
  */
 module.exports = async (client, message) => {
   if (!message.inGuild || message.author.bot) return;
+  if (!message.content.match(/\d+/gm)) return;
   if (!message.content.startsWith(process.env.COMMAND_PREFIX)) return;
   if (
     !(

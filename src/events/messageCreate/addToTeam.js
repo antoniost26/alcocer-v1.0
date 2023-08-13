@@ -23,6 +23,7 @@ module.exports = async (client, message) => {
 
   const command = "tadd";
 
+  if (!message.content.match(/\d+/gm)) return;
   if (
     message.content.substring(
       process.env.COMMAND_PREFIX.length,
