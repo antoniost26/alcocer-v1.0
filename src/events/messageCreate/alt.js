@@ -2,7 +2,11 @@ const { Client, Message, inlineCode } = require("discord.js");
 require("dotenv").config();
 const altAccount = require("../../models/altAccount");
 const cooldowns = [];
-const { commandWhitelist, serverNames, messageTemplate } = require("../../../config.json");
+const {
+  commandWhitelist,
+  serverNames,
+  messageTemplate,
+} = require("../../../config.json");
 
 /**
  *
@@ -15,7 +19,8 @@ module.exports = async (client, message) => {
   if (
     !(
       message.guildId === "829600493398786078" ||
-      message.guildId === "1119350182346244178"
+      message.guildId === "1119350182346244178" ||
+      message.guildId === "1075493308152959088"
     )
   )
     return;
@@ -90,27 +95,44 @@ module.exports = async (client, message) => {
         return;
       }
       message.channel.parentId === "877262022545383495"
-      ?await message.channel.send({
-        content: `Found following alt intrusions for id ${inlineCode(
-        targetId
-      )}\n${allAccountDetections
-        .map(
-          (detection) =>
-            `${serverNames[detection.messageLink.split("/").at(4)]?serverNames[detection.messageLink.split("/").at(4)] + " - " : ""}${detection.messageLink}`
-        )
-        .join("\n")}`
-    }).then(async () => await message.reply({content: "Other format is only available outside of tickets. Try using it in <#855473470329716756>", ephemeral: true}))
-      :await message.channel.send({
-        content: `Found following alt intrusions for id ${inlineCode(
-          targetId
-        )}\n${allAccountDetections
-          .map(
-            (alt) =>
-              `${messageTemplate.replaceAll("<main-account>", alt.mainAccount).replaceAll("<alt-account>", alt.altAccount)
-              }${args.includes("-l")?`\n${alt.messageLink}`:''}`
-          )
-          .join("\n")}`
-      });
+        ? await message.channel
+            .send({
+              content: `Found following alt intrusions for id ${inlineCode(
+                targetId
+              )}\n${allAccountDetections
+                .map(
+                  (detection) =>
+                    `${
+                      serverNames[detection.messageLink.split("/").at(4)]
+                        ? serverNames[detection.messageLink.split("/").at(4)] +
+                          " - "
+                        : ""
+                    }${detection.messageLink}`
+                )
+                .join("\n")}`,
+            })
+            .then(
+              async () =>
+                await message.reply({
+                  content:
+                    "Other format is only available outside of tickets. Try using it in <#855473470329716756>",
+                  ephemeral: true,
+                })
+            )
+        : await message.channel.send({
+            content: `Found following alt intrusions for id ${inlineCode(
+              targetId
+            )}\n${allAccountDetections
+              .map(
+                (alt) =>
+                  `${messageTemplate
+                    .replaceAll("<main-account>", alt.mainAccount)
+                    .replaceAll("<alt-account>", alt.altAccount)}${
+                    args.includes("-l") ? `\n${alt.messageLink}` : ""
+                  }`
+              )
+              .join("\n")}`,
+          });
     } catch (error) {
       console.log(
         `Error searching alts for ${inlineCode(targetId)}:\n ${error}`
