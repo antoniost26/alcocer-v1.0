@@ -99,5 +99,5 @@ module.exports = async (client, message) => {
       await message.channel
         .bulkDelete(botMessage)
         .catch((error) => console.log(error));
-  }, 3000);
+  }, 10000);
 };
