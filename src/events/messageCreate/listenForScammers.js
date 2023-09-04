@@ -9,7 +9,7 @@ const { scammersIdChannelId } = require("../../../config.json");
  * @param {Message} message
  */
 module.exports = async (client, message) => {
-  if (message.author.bot) return;
+  if (message.author.bot && message.author.id != "1084377720236019743") return;
   if (!(message.channelId === scammersIdChannelId)) return;
   if (!message.content.match(/[\d to be removed]+/gm)) return;
 
