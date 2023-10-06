@@ -11,7 +11,7 @@ const { scammersIdChannelId } = require("../../../config.json");
 module.exports = async (client, message) => {
   if (message.author.bot && message.author.id != "1084377720236019743") return;
   if (!(message.channelId === scammersIdChannelId)) return;
-  if (messageContent.includes("752841321303244941")) {
+  if (message.content.includes("752841321303244941")) {
     await message.delete().catch((error) => console.log(error));
     return;
   }
