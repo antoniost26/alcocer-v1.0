@@ -11,11 +11,16 @@ const { scammersIdChannelId } = require("../../../config.json");
 module.exports = async (client, message) => {
   if (message.author.bot && message.author.id != "1084377720236019743") return;
   if (!(message.channelId === scammersIdChannelId)) return;
+  if (messageContent.includes("752841321303244941")) {
+    await message.delete().catch((error) => console.log(error));
+    return;
+  }
   if (!message.content.match(/[\d to be removed]+/gm)) return;
 
   const messageContent = message.content;
   let botMessage = [];
   let toDelete = true;
+
   messageContent.split("\n").forEach(async (element) => {
     if (element.match(/to be removed/gm) && element.match(/\d+/gm)) {
       try {
