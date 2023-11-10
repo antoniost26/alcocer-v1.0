@@ -107,10 +107,6 @@ async function constructEmbeds(client, message, targetUser) {
   let targetUsername = [];
   const _ = require("lodash/array");
   feedbackArray.forEach((feedback) => {
-    console.log(feedback.isAnon);
-    console.log(isAdmin);
-    console.log(message.includes("-v"));
-    console.log(message);
     client.users
       .fetch(targetUser)
       .then((targetMember) => {
