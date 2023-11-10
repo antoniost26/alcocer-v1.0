@@ -45,7 +45,7 @@ module.exports = async (client, message) => {
   //
   const _ = require("lodash/array");
   let embeds = [];
-  let data = await constructEmbeds(client, message, targetUser);
+  let data = await constructEmbeds(client, message.content, targetUser);
 
   if (data[0].length == 0) {
     let { targetAvatarURL, targetUsername } = await getUserData(
@@ -108,9 +108,7 @@ async function constructEmbeds(client, message, targetUser) {
   const _ = require("lodash/array");
   feedbackArray.forEach((feedback) => {
     console.log(
-      feedback.isAnon &&
-        !isAdmin &&
-        !message.content.includes("-v") + "  -  " + message.content
+      feedback.isAnon && !isAdmin && !message.includes("-v") + "  -  " + message
     );
     client.users
       .fetch(targetUser)
@@ -118,7 +116,7 @@ async function constructEmbeds(client, message, targetUser) {
         fields.push({
           name: ``,
           value: `Received from ${
-            feedback.isAnon && !isAdmin && !message.content.includes("-v")
+            feedback.isAnon && !isAdmin && !message.includes("-v")
               ? "Anonymous User"
               : `<@${feedback.authorId}>`
           }:\n${feedback.feedback}\n${inlineCode("Reference:")}\n${
