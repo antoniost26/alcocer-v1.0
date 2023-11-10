@@ -113,7 +113,7 @@ async function constructEmbeds(client, message, targetUser) {
         fields.push({
           name: ``,
           value: `Received from ${
-            feedback.isAnon && !isAdmin && !message.content.contains("-v")
+            feedback.isAnon && !isAdmin && !message.content.includes("-v")
               ? "Anonymous User"
               : `<@${feedback.authorId}>`
           }:\n${feedback.feedback}\n${inlineCode("Reference:")}\n${
