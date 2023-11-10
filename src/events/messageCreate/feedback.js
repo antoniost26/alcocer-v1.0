@@ -1,7 +1,7 @@
 const { Client, Message, inlineCode } = require("discord.js");
 require("dotenv").config();
 const feedbackSchema = require("../../models/feedback.js");
-let isAdmin = false;
+let isAdmin;
 /**
  *
  * @param {Client} client
@@ -107,13 +107,14 @@ async function constructEmbeds(client, message, targetUser) {
   let targetUsername = [];
   const _ = require("lodash/array");
   feedbackArray.forEach((feedback) => {
+    console.log(isAdmin);
     client.users
       .fetch(targetUser)
       .then((targetMember) => {
         fields.push({
           name: ``,
           value: `Received from ${
-            feedback.isAnon && !isAdmin && !message.content.includes("-v")
+            feedback.isAnon && !isAdmin
               ? "Anonymous User"
               : `<@${feedback.authorId}>`
           }:\n${feedback.feedback}\n${inlineCode("Reference:")}\n${
