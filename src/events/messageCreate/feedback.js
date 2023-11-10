@@ -1,7 +1,7 @@
 const { Client, Message, inlineCode } = require("discord.js");
 require("dotenv").config();
 const feedbackSchema = require("../../models/feedback.js");
-
+let isAdmin = false;
 /**
  *
  * @param {Client} client
@@ -19,7 +19,6 @@ module.exports = async (client, message) => {
     )
   )
     return;
-  let isAdmin = false;
   if (!(message.channel.type == 1))
     isAdmin = message.member.roles.cache.some((role) =>
       [
@@ -114,7 +113,9 @@ async function constructEmbeds(client, message, targetUser) {
         fields.push({
           name: ``,
           value: `Received from ${
-            feedback.isAnon ? "Anonymous User" : `<@${feedback.authorId}>`
+            feedback.isAnon && !isAdmin
+              ? "Anonymous User"
+              : `<@${feedback.authorId}>`
           }:\n${feedback.feedback}\n${inlineCode("Reference:")}\n${
             feedback.messageLink ? feedback.messageLink : "none"
           }`,
