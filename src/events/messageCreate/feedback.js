@@ -107,16 +107,20 @@ async function constructEmbeds(client, message, targetUser) {
   let targetUsername = [];
   const _ = require("lodash/array");
   feedbackArray.forEach((feedback) => {
-    console.log(feedback.isAnon && !isAdmin && !message.includes("-v"));
-    console.log("  -  " + message);
+    console.log(feedback.isAnon);
+    console.log(isAdmin);
+    console.log(message.includes("-v"));
+    console.log(message);
     client.users
       .fetch(targetUser)
       .then((targetMember) => {
         fields.push({
           name: ``,
           value: `Received from ${
-            feedback.isAnon && !isAdmin && !message.includes("-v")
-              ? "Anonymous User"
+            feedback.isAnon
+              ? isAdmin && message.includes("-v")
+                ? `<@${feedback.authorId}>`
+                : "Anonymous User"
               : `<@${feedback.authorId}>`
           }:\n${feedback.feedback}\n${inlineCode("Reference:")}\n${
             feedback.messageLink ? feedback.messageLink : "none"
