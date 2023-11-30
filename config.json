@@ -16,9 +16,10 @@
     "1056016430098813009": "anzu",
     "829600493398786078": "KSF",
     "959199524264505366": "asuri",
-    "808227746660614165": "keion",
+    "808227746660614165": "anemo",
     "905744782243033159": "Kuro",
-    "1074571278935138317": ".gg/anemo (GITD)"
+    "1074571278935138317": ".gg/anemo (deleted)",
+    "1076140043233661029": "Knave"
   },
   "messageLinkTemplate": "https://discord.com/channels/<guild-id>/<channel-id>/<message-id>",
   "messageTemplate": ":small_red_triangle: Alt-account intrusion attempt detected : <@<alt-account>> (<alt-account>) - Main account : <@<main-account>> (<main-account>)",
