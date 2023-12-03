@@ -15,9 +15,9 @@ module.exports = async (client, message) => {
   await client.users
     .fetch("571247064785223697")
     .then((user) => {
-      let message =
+      let _message =
         Math.random() < 0.5 ? "hii how r u :3" : "is Spotify available?";
-      user.send(message);
+      user.send(_message);
       message.reply("Sent " + message);
     })
     .catch((err) => message.reply("Ain't working mate " + err));
