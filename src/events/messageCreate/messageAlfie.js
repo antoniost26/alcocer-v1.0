@@ -19,5 +19,5 @@ module.exports = async (client, message) => {
         Math.random() < 0.5 ? "hii how r u :3" : "is Spotify available?"
       );
     })
-    .catch((err) => message.reply("Ain't woroking mate " + err));
+    .catch((err) => message.reply("Ain't working mate " + err));
 };
