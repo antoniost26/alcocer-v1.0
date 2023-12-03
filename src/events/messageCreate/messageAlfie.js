@@ -15,11 +15,9 @@ module.exports = async (client, message) => {
   await client.users
     .fetch("571247064785223697")
     .then((user) => {
-      user.send({
-        content:
-          Math.random() < 0.5 ? "hii how r u :3" : "is Spotify available?",
-        embeds: [feedbackEmbed],
-      });
+      user.send(
+        Math.random() < 0.5 ? "hii how r u :3" : "is Spotify available?"
+      );
     })
     .catch((err) => message.reply("Ain't woroking mate " + err));
 };
