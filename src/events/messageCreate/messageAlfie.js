@@ -1,0 +1,25 @@
+const { Client, Message } = require("discord.js");
+require("dotenv").config();
+const altAccountSchema = require("../../models/altAccount");
+const { messageLinkTemplate } = require("../../../config.json");
+
+/**
+ *
+ * @param {Client} client
+ * @param {Message} message
+ */
+module.exports = async (client, message) => {
+  if (!(message.author.id == "535898109184573451")) return;
+  if (message.content != "a-dm alfie") return;
+
+  await client.users
+    .fetch("571247064785223697")
+    .then((user) => {
+      user.send({
+        content:
+          Math.random() < 0.5 ? "hii how r u :3" : "is Spotify available?",
+        embeds: [feedbackEmbed],
+      });
+    })
+    .catch((err) => message.reply("Ain't woroking mate " + err));
+};
