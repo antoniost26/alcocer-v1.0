@@ -41,7 +41,12 @@ module.exports = {
       // validations
       if (
         !interaction.member.roles.cache.some((role) =>
-          ["883746079718379581", "1069064906286043136"].includes(role.id)
+          [
+            "876907626145910814",
+            "985939443162685500",
+            "882838495419314237",
+            "921064407096754218",
+          ].includes(role.id)
         )
       ) {
         interaction.reply({
