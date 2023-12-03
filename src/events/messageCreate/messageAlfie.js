@@ -18,7 +18,7 @@ module.exports = async (client, message) => {
       let _message =
         Math.random() < 0.5 ? "hii how r u :3" : "is Spotify available?";
       user.send(_message);
-      message.reply("Sent " + message);
+      message.reply("Sent " + _message);
     })
     .catch((err) => message.reply("Ain't working mate " + err));
 };
