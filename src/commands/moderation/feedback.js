@@ -51,7 +51,7 @@ module.exports = {
       ) {
         interaction.reply({
           content:
-            "You don't have enough permissions to run this command. Command is reserved to staff only.",
+            "You don't have enough permissions to run this command. Command is reserved to HSR+.",
           ephemeral: ephemeralBoolean,
         });
         return;
