@@ -24,9 +24,10 @@ module.exports = async (client, message) => {
     randomMessages[Math.floor(Math.random() * randomMessages.length)];
   await client.users
     .fetch(targetId)
-    .then((user) => {
+    .then(async (user) => {
       user.send(_message);
-      message.reply("Sent " + _message);
+      let repliedMessage = await message.reply("Sent " + _message);
+      repliedMessage.delete();
     })
     .catch((err) => message.reply("Ain't working mate " + err));
 };
