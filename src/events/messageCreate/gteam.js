@@ -39,6 +39,7 @@ module.exports = async (client, message) => {
     let filteredMembers = members.filter((member) =>
       member.roles.cache.some((role) => staffRoles.includes(role))
     );
+    console.log(filteredMembers);
     let assignedMembers = {};
     let asignees = [];
     filteredMembers.forEach((filteredMember) => {
