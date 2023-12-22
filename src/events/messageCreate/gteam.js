@@ -49,12 +49,13 @@ module.exports = async (client, message) => {
       assignedMembers[filteredMember.id] = member.id;
       asignees.push(member.id);
     });
-    let sentMessage = "";
-    Object.keys(assignedMembers).forEach((key) => {
-      sentMessage += `${key} -> ${assignedMembers[key]}`;
-    });
+    let sentMessage = [];
+    for (var key in assignedMembers) {
+      sentMessage.push(`${key} -> ${assignedMembers[key]}`);
+    }
+    console.log(assignedMembers);
     message.channel.send(
-      `Teams have been generated as following:\n${sentMessage}`
+      `Teams have been generated as following:\n${sentMessage.join("\n")}`
     );
   }
 };
