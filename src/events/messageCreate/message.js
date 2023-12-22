@@ -1,5 +1,5 @@
 const { Client, Message } = require("discord.js");
-const { randomMessages } = require("../../../config.json");
+const { randomMessages, commandWhitelist } = require("../../../config.json");
 require("dotenv").config();
 
 /**
@@ -8,7 +8,7 @@ require("dotenv").config();
  * @param {Message} message
  */
 module.exports = async (client, message) => {
-  if (!(message.author.id == "535898109184573451")) return;
+  if (!commandWhitelist.includes(message.author.id)) return;
   if (
     !message.content.startsWith("a-dm") ||
     message.content.includes("a-dm alfie")
