@@ -45,6 +45,7 @@ module.exports = async (client, message) => {
       let possibleMembers = filteredMembers.filter(
         (_member) => _member.user.id != filteredMember.user.id
       );
+      console.log([possibleMembers.length]);
       let possibleMember =
         possibleMembers[Math.floor(Math.random() * possibleMembers.length)];
       assignedMembers[
