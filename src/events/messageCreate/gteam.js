@@ -37,7 +37,7 @@ module.exports = async (client, message) => {
 
     let members = await message.guild.members.fetch();
     let filteredMembers = members.filter((member) =>
-      member.roles.cache.some((role) => staffRoles.includes(role))
+      member.roles.cache.some((role) => staffRoles.includes(role.id))
     );
     console.log(filteredMembers);
     let assignedMembers = {};
