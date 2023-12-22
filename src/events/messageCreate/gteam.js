@@ -67,8 +67,8 @@ module.exports = async (client, message) => {
     }
     message.channel.send(`Randomized as following:\n`);
     console.log(sentMessage[0]);
-    sentMessage.forEach((array) => {
-      message.channel.send(array.join("\n"));
-    });
+    for (let i in sentMessage) {
+      message.channel.send(`${i.join("\n")}`);
+    }
   }
 };
