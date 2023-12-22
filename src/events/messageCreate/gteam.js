@@ -27,7 +27,7 @@ module.exports = async (client, message) => {
   )
     return;
 
-  const command = "gteam";
+  const command = "randomize";
 
   if (
     message.content.substring(
@@ -36,48 +36,27 @@ module.exports = async (client, message) => {
     ) == command
   ) {
     if (message.content === command) return;
-    let teamNumber = message.content.match(/\d+/gm)[0];
-    // let carr = [...carries];
-    // carr.sort(function () {
-    // return 0.5 - Math.random();
-    // });
-    let rep = [];
-    const repp = teamSchema.find();
-    for await (const r of repp) {
-      rep.push(r.accountId);
-    }
-    rep.sort(function () {
-      return 0.5 - Math.random();
-    });
-    for (let i = 1; i < 5; i++)
-      rep.sort(function () {
-        return 0.5 - Math.random();
-      });
-    let teams = [[]];
-    // for (let i = 0; i < teamNumber; i++) {
-    // teams[i] = carr.length ? [carr.pop()] : [];
-    // }
-    // if (carr.length) rep = [...rep, ...carr];
-    let i = 0;
-    while (rep.length) {
-      teams[i] ? teams[i].push(rep.pop()) : (teams[i] = [rep.pop()]);
-      if (i == teamNumber - 1) {
-        i = 0;
-      } else {
-        i++;
-      }
-    }
 
-    let teamAnno = [];
-    let ind = 1;
-    teams.forEach((element) => {
-      teamAnno.push(
-        `Team ${ind}:\n${element.map((el) => `<@${el}>`).join(", ")}`
-      );
-      ind++;
+    let members = await message.guild.members.fetch();
+    let filteredMembers = members.filter((member) =>
+      member.roles.some((role) => arr2.includes(r))
+    );
+    let assignedMembers = {};
+    let asignees = [];
+    filteredMembers.forEach((filteredMember) => {
+      let member = filteredMembers.filter(
+        (member) =>
+          member.id != filteredMember.id && !asignees.includes(member.id)
+      )[Math.floor(Math.random() * (filteredMembers.length - 1))];
+      assignedMembers[filteredMember.id] = member.id;
+      asignees.push(member.id);
+    });
+    let sentMessage = "";
+    assignedMembers.keys().forEach((key) => {
+      sentMessage += `${key} -> ${assignedMembers[key]}`;
     });
     message.channel.send(
-      `Teams have been generated as following:\n${teamAnno.join("\n-\n")}`
+      `Teams have been generated as following:\n${sentMessage}`
     );
   }
 };

@@ -34,6 +34,16 @@
   "messageLinkTemplate": "https://discord.com/channels/<guild-id>/<channel-id>/<message-id>",
   "messageTemplate": ":small_red_triangle: Alt-account intrusion attempt detected : <@<alt-account>> (<alt-account>) - Main account : <@<main-account>> (<main-account>)",
   "scammersIdChannelId": "1130234314626453544",
+  "staffRoles": [
+    "1069064906286043136",
+    "921064407096754218",
+    "985939443162685500",
+    "876907626145910814",
+    "832191446933176380",
+    "941841807526989824",
+    "847056885026914315",
+    "882838495419314237"
+  ],
   "carries": [
     "864286388601094156",
     "643541010978177065",
