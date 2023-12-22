@@ -50,7 +50,7 @@ module.exports = async (client, message) => {
       asignees.push(member.id);
     });
     let sentMessage = "";
-    assignedMembers.keys().forEach((key) => {
+    Object.keys(assignedMembers).forEach((key) => {
       sentMessage += `${key} -> ${assignedMembers[key]}`;
     });
     message.channel.send(
