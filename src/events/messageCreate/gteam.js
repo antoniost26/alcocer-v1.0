@@ -51,7 +51,7 @@ module.exports = async (client, message) => {
       assignedMembers[
         filteredMember?.user?.id ? filteredMember?.user?.id : "unknown"
       ] = member?.user?.id ? member.user?.id : "0";
-      asignees.push(member.user.id);
+      asignees.push(member?.user?.id ? member?.user?.id : "0");
     });
     let sentMessage = [];
     for (var key in assignedMembers) {
