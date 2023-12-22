@@ -14,12 +14,14 @@ module.exports = async (client, message) => {
     message.content.includes("a-dm alfie")
   )
     return;
+  let args = message.content.split(" ");
 
   const targetId = message.mentions.repliedUser
     ? message.mentions.repliedUser.id
     : message.mentions.members.first()
     ? message.mentions.members.first().id
     : args.at(1).trim();
+
   let _message =
     randomMessages[Math.floor(Math.random() * randomMessages.length)];
   await client.users
