@@ -15,7 +15,7 @@ module.exports = async (client, message) => {
   let dev = await client.users.fetch(devs[0]);
   dev
     .send({
-      body: `Message sent by ${
+      content: `Message sent by ${
         author.username ? author.username : author.id
       } (${author.id}) in DMs: \n ${message.content}`,
       files: message.attachments ? message.attachments : null,
