@@ -39,7 +39,6 @@ module.exports = async (client, message) => {
     let filteredMembers = members.filter((member) =>
       member.roles.cache.some((role) => staffRoles.includes(role.id))
     );
-    console.log(filteredMembers);
     let assignedMembers = {};
     let asignees = [];
     filteredMembers.forEach((filteredMember) => {
@@ -54,7 +53,6 @@ module.exports = async (client, message) => {
     for (var key in assignedMembers) {
       sentMessage.push(`${key} -> ${assignedMembers[key]}`);
     }
-    console.log(assignedMembers);
     message.channel.send(
       `Teams have been generated as following:\n${sentMessage.join("\n")}`
     );
