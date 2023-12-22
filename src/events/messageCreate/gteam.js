@@ -59,7 +59,7 @@ module.exports = async (client, message) => {
       let index = 0;
       while (sentMessage[index]?.join("\n").length > 1800) index += 1;
 
-      if (sentMessage[index].length > 0) {
+      if (sentMessage[index]?.length > 0) {
         sentMessage.push(`${key} -> ${assignedMembers[key]}`);
         continue;
       }
