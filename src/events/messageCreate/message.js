@@ -10,8 +10,8 @@ require("dotenv").config();
 module.exports = async (client, message) => {
   if (!(message.author.id == "535898109184573451")) return;
   if (
-    message.content.startsWith != "a-dm" &&
-    !message.content.includes("a-dm alfie")
+    !message.content.startsWith("a-dm") ||
+    message.content.includes("a-dm alfie")
   )
     return;
 
