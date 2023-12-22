@@ -21,7 +21,7 @@ module.exports = async (client, message) => {
       content: `Message sent by ${
         author.username ? author.username : author.id
       } (${author.id}) in DMs: \n ${message.content}`,
-      files: attachments ? [...attachments] : [],
+      files: attachments ? [...attachments.values()] : [],
     })
     .catch((error) => console.log(error));
 };
