@@ -48,6 +48,7 @@ module.exports = async (client, message) => {
     filteredMembers.forEach((filteredMember) => {
       let possibleMember =
         possibleMembers[Math.floor(Math.random() * possibleMembers.length)];
+      console.log(possibleMember);
       assignedMembers[
         filteredMember?.user?.id ? filteredMember?.user?.id : "unknown"
       ] = possibleMember?.user?.id ? possibleMember.user?.id : "0";
