@@ -48,9 +48,9 @@ module.exports = async (client, message) => {
           !asignees.includes(member.user.id)
       )[Math.floor(Math.random() * (filteredMembers.length - 1))];
       console.log(filteredMember);
-      assignedMembers[filteredMember.user?.id] = member.user?.id
-        ? member.user?.id
-        : "0";
+      assignedMembers[
+        filteredMember?.user?.id ? filteredMember?.user?.id : "unknown"
+      ] = member?.user?.id ? member.user?.id : "0";
       asignees.push(member.user.id);
     });
     let sentMessage = [];
