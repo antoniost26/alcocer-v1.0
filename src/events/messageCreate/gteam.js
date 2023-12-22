@@ -48,7 +48,11 @@ module.exports = async (client, message) => {
         (_filteredMember) =>
           _filteredMember.user.id != filteredMember.user.id &&
           !asignees.includes(_filteredMember.user.id)
-      )[Math.floor(Math.random() * possibleMembers.length)];
+      )[
+        Math.floor(
+          Math.random() * (filteredMembers.length - asignees.length - 1)
+        )
+      ];
       assignedMembers[
         filteredMember?.user?.id ? filteredMember?.user?.id : "unknown"
       ] = possibleMember?.user?.id ? possibleMember.user?.id : "0";
