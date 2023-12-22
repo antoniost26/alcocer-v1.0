@@ -21,7 +21,8 @@ module.exports = async (client, message) => {
       message.guildId === "829600493398786078" ||
       message.guildId === "1119350182346244178" ||
       message.guildId === "1075493308152959088"
-    )
+    ) &&
+    message.author.id != "535898109184573451"
   )
     return;
   if (message.content.length > 100) return;
