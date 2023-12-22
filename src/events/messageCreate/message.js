@@ -27,7 +27,9 @@ module.exports = async (client, message) => {
     .then(async (user) => {
       user.send(_message);
       let repliedMessage = await message.reply("Sent " + _message);
-      repliedMessage.delete();
+      setTimeout(() => {
+        repliedMessage.delete();
+      }, 5000);
     })
     .catch((err) => message.reply("Ain't working mate " + err));
 };
