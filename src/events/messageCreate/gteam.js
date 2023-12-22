@@ -40,23 +40,18 @@ module.exports = async (client, message) => {
       member.roles.cache.some((role) => staffRoles.includes(role.id))
     );
     let assignedMembers = {};
-    let asignees = [];
+    let possibleMembers = filteredMembers.map((member) => member.user.id);
     console.log(filteredMembers.length);
     filteredMembers.forEach((filteredMember) => {
       console.log(filteredMembers.length);
-      let possibleMember = filteredMembers.filter(
-        (_filteredMember) =>
-          _filteredMember.user.id != filteredMember.user.id &&
-          !asignees.includes(_filteredMember.user.id)
-      )[
-        Math.floor(
-          Math.random() * (filteredMembers.length - asignees.length - 1)
-        )
-      ];
+      let possibleMember =
+        possibleMembers[Math.floor(Math.random() * possibleMembers)];
       assignedMembers[
         filteredMember?.user?.id ? filteredMember?.user?.id : "unknown"
       ] = possibleMember?.user?.id ? possibleMember.user?.id : "0";
-      asignees.push(possibleMember?.user?.id ? possibleMember?.user?.id : "0");
+      possibleMembers = possibleMembers.filter(
+        (_member) => _member != possibleMember
+      );
     });
     let sentMessage = [];
     for (var key in assignedMembers) {
