@@ -44,11 +44,14 @@ module.exports = async (client, message) => {
     filteredMembers.forEach((filteredMember) => {
       let member = filteredMembers.filter(
         (member) =>
-          member.id != filteredMember.id && !asignees.includes(member.id)
+          member.user.id != filteredMember.user.id &&
+          !asignees.includes(member.user.id)
       )[Math.floor(Math.random() * (filteredMembers.length - 1))];
       console.log(filteredMember);
-      assignedMembers[filteredMember?.id] = member?.id ? member?.id : "0";
-      asignees.push(member.id);
+      assignedMembers[filteredMember.user?.id] = member.user?.id
+        ? member.user?.id
+        : "0";
+      asignees.push(member.user.id);
     });
     let sentMessage = [];
     for (var key in assignedMembers) {
