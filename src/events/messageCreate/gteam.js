@@ -47,7 +47,7 @@ module.exports = async (client, message) => {
         (member) =>
           member.id != filteredMember.id && !asignees.includes(member.id)
       )[Math.floor(Math.random() * (filteredMembers.length - 1))];
-      assignedMembers[filteredMember.id] = member.id;
+      assignedMembers[filteredMember.id] = member?.id ? member?.id : "0";
       asignees.push(member.id);
     });
     let sentMessage = [];
