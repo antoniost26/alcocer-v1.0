@@ -21,6 +21,15 @@
     "1074571278935138317": ".gg/anemo (deleted)",
     "1076140043233661029": "Knave"
   },
+  "randomMessages": [
+    "Howdy how are we feeling today??",
+    "Top of the morning to ya lad, what's goin' on?",
+    "wowzers!! O_o",
+    "kachow o-o",
+    "Your reporter license has expired, please provide your CC info and patiently wait.",
+    "Micha said ur gay",
+    "Go take some ticket mate"
+  ],
   "messageLinkTemplate": "https://discord.com/channels/<guild-id>/<channel-id>/<message-id>",
   "messageTemplate": ":small_red_triangle: Alt-account intrusion attempt detected : <@<alt-account>> (<alt-account>) - Main account : <@<main-account>> (<main-account>)",
   "scammersIdChannelId": "1130234314626453544",

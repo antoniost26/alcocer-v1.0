@@ -1,7 +1,5 @@
 const { Client, Message } = require("discord.js");
 require("dotenv").config();
-const altAccountSchema = require("../../models/altAccount");
-const { messageLinkTemplate } = require("../../../config.json");
 
 /**
  *
