@@ -40,8 +40,10 @@ module.exports = async (client, message) => {
       member.roles.cache.some((role) => staffRoles.includes(role.id))
     );
     let assignedMembers = {};
-    let possibleMembers = filteredMembers.map((member) => member.user.id);
-    console.log(filteredMembers.length);
+    let possibleMembers = [];
+    filteredMembers.forEach((element) => {
+      possibleMembers.push(element.user.id);
+    });
     filteredMembers.forEach((filteredMember) => {
       let possibleMember =
         possibleMembers[Math.floor(Math.random() * possibleMembers.length)];
