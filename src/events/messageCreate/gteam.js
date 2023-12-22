@@ -50,8 +50,8 @@ module.exports = async (client, message) => {
         possibleMembers[Math.floor(Math.random() * possibleMembers.length)];
       console.log(possibleMember);
       assignedMembers[
-        filteredMember?.user?.id ? filteredMember?.user?.id : "unknown"
-      ] = possibleMember?.user?.id ? possibleMember.user?.id : "0";
+        filteredMember.user.id ? filteredMember.user.id : "unknown"
+      ] = possibleMember ? possibleMember : "0";
       possibleMembers = possibleMembers.filter(
         (_member) => _member != possibleMember
       );
