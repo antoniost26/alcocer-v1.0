@@ -57,10 +57,13 @@ module.exports = async (client, message) => {
     let sentMessage = [[]];
     for (var key in assignedMembers) {
       let index = 0;
-      if (sentMessage[index] == null) sentMessage[index] = [];
       while (sentMessage[index]?.join("\n").length > 1800) index += 1;
 
-      sentMessage[index].push(`${key} -> ${assignedMembers[key]}`);
+      if (sentMessage[index].length > 0) {
+        sentMessage.push(`${key} -> ${assignedMembers[key]}`);
+        continue;
+      }
+      sentMessage[index] = [`${key} -> ${assignedMembers[key]}`];
     }
     message.channel.send(`Randomized as following:\n`);
     sentMessage.forEach((array) => {
