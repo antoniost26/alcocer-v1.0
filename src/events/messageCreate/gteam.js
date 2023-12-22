@@ -44,11 +44,9 @@ module.exports = async (client, message) => {
     filteredMembers.forEach((element) => {
       possibleMembers.push(element.user.id);
     });
-    console.log(possibleMembers);
     filteredMembers.forEach((filteredMember) => {
       let possibleMember =
         possibleMembers[Math.floor(Math.random() * possibleMembers.length)];
-      console.log(possibleMember);
       assignedMembers[
         filteredMember.user.id ? filteredMember.user.id : "unknown"
       ] = possibleMember ? possibleMember : "0";
@@ -58,10 +56,14 @@ module.exports = async (client, message) => {
     });
     let sentMessage = [];
     for (var key in assignedMembers) {
-      sentMessage.push(`${key} -> ${assignedMembers[key]}`);
+      let index = 0;
+      while (sentMessage[index].join("\n").length > 1800) index += 1;
+
+      sentMessage[index].push(`${key} -> ${assignedMembers[key]}`);
     }
-    message.channel.send(
-      `Teams have been generated as following:\n${sentMessage.join("\n")}`
-    );
+    message.channel.send(`Randomized as following:\n`);
+    sentMessage.forEach((array) => {
+      message.channel.send(array.join("\n"));
+    });
   }
 };
