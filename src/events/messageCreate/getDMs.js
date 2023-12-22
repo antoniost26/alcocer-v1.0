@@ -14,12 +14,14 @@ module.exports = async (client, message) => {
   let author = message.author;
 
   let dev = await client.users.fetch(devs[0]);
+
+  let attachments = message.attachments;
   dev
     .send({
       content: `Message sent by ${
         author.username ? author.username : author.id
       } (${author.id}) in DMs: \n ${message.content}`,
-      files: message.attachments ? message.attachments : null,
+      files: attachments ? [...attachments] : [],
     })
     .catch((error) => console.log(error));
 };
