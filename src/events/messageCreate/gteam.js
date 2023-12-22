@@ -1,7 +1,6 @@
 const { Client, Message } = require("discord.js");
 require("dotenv").config();
-const teamSchema = require("../../models/teams.js");
-const { devs, carries } = require("../../../config.json");
+const { devs, staffRoles } = require("../../../config.json");
 
 /**
  *
@@ -38,7 +37,7 @@ module.exports = async (client, message) => {
 
     let members = await message.guild.members.fetch();
     let filteredMembers = members.filter((member) =>
-      member.roles.cache.some((role) => arr2.includes(r))
+      member.roles.cache.some((role) => staffRoles.includes(r))
     );
     let assignedMembers = {};
     let asignees = [];
