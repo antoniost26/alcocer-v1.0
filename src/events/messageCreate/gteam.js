@@ -54,11 +54,11 @@ module.exports = async (client, message) => {
         (_member) => _member != possibleMember
       );
     });
-    let sentMessage = [];
+    let sentMessage = [[]];
     for (var key in assignedMembers) {
       let index = 0;
-      if (!sentMessage[index]) sentMessage[index] = [];
-      while (sentMessage[index].join("\n").length > 1800) index += 1;
+      if (sentMessage[index] == null) sentMessage[index] = [];
+      while (sentMessage[index]?.join("\n").length > 1800) index += 1;
 
       sentMessage[index].push(`${key} -> ${assignedMembers[key]}`);
     }
