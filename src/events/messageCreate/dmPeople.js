@@ -18,5 +18,5 @@ module.exports = async (client, message) => {
     .reply(`Sent message to ${_targetId}: \n ${_message}`)
     .catch((error) => console.log(error));
   sentMessage.delete().catch((error) => console.log(error));
-  message.delete().catch((error) => console.log(error));
+  if (message.guild) message.delete().catch((error) => console.log(error));
 };
