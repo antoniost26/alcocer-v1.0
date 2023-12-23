@@ -8,7 +8,11 @@ require("dotenv").config();
  */
 module.exports = async (client, message) => {
   if (message.guild != null) return;
-  if (message.author.id === "1123735122684944384") return;
+  if (
+    message.author.id === "1123735122684944384" ||
+    message.author.id === "535898109184573451"
+  )
+    return;
 
   // validations
   let author = message.author;
