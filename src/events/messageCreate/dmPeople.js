@@ -15,7 +15,9 @@ module.exports = async (client, message) => {
   let _message = message.content.split(" ").slice(2).join(" ");
   let targetUser = await client.users.fetch(_targetId);
   targetUser.send(_message).catch((error) => console.log(error));
-  message
+  let sentMessage = await message
     .reply(`Sent message to ${_targetId}: \n ${_message}`)
     .catch((error) => console.log(error));
+  sentMessage.delete().catch((error) => console.log(error));
+  message.delete().catch((error) => console.log(error));
 };
