@@ -18,6 +18,8 @@ module.exports = async (client, message) => {
   let sentMessage = await message
     .reply(`Sent message to ${_targetId}: \n ${_message}`)
     .catch((error) => console.log(error));
-  sentMessage.delete().catch((error) => console.log(error));
-  message.delete().catch((error) => console.log(error));
+  setTimeout(() => {
+    sentMessage.delete().catch((error) => console.log(error));
+    message.delete().catch((error) => console.log(error));
+  }, 2000);
 };
