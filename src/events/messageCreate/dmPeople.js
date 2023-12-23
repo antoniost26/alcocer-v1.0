@@ -20,5 +20,5 @@ module.exports = async (client, message) => {
   setTimeout(() => {
     sentMessage.delete().catch((error) => console.log(error));
     message.delete().catch((error) => console.log(error));
-  }, 1000);
+  }, 300);
 };
