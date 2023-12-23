@@ -7,7 +7,6 @@ require("dotenv").config();
  * @param {Message} message
  */
 module.exports = async (client, message) => {
-  if (message?.guild != null) return;
   if (message.author.id != devs[0]) return;
   if (!message.content.startsWith("a-message")) return;
 
