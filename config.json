@@ -32,7 +32,7 @@
     "micha said ur getting fired"
   ],
   "messageLinkTemplate": "https://discord.com/channels/<guild-id>/<channel-id>/<message-id>",
-  "messageTemplate": ":small_red_triangle: Alt-account intrusion attempt detected : <@<alt-account>> (<alt-account>) - Main account : <@<main-account>> (<main-account>)",
+  "messageTemplate": ":small_red_triangle: Alt-account intrusion attempt detected: <@<alt-account>> (<alt-account>) - Main account : <@<main-account>> (<main-account>) | detected in <message-link>",
   "scammersIdChannelId": "1130234314626453544",
   "staffRoles": [
     "1069064906286043136",

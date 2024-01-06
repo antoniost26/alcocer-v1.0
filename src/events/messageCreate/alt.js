@@ -116,7 +116,7 @@ module.exports = async (client, message) => {
               async () =>
                 await message.reply({
                   content:
-                    "Other format is only available outside of tickets. Try using it in <#855473470329716756>",
+                    "Other format is only available outside of tickets. Try using it in <#1141387412916936755>",
                   ephemeral: true,
                 })
             )
@@ -128,8 +128,8 @@ module.exports = async (client, message) => {
                 (alt) =>
                   `${messageTemplate
                     .replaceAll("<main-account>", alt.mainAccount)
-                    .replaceAll("<alt-account>", alt.altAccount)}${
-                    args.includes("-l") ? `\n${alt.messageLink}` : ""
+                    .replaceAll("<alt-account>", alt.altAccount)
+                    .replaceAll("<message-link>", alt.messageLink)}
                   }`
               )
               .join("\n")}`,
