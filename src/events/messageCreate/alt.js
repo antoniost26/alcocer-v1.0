@@ -129,8 +129,7 @@ module.exports = async (client, message) => {
                   `${messageTemplate
                     .replaceAll("<main-account>", alt.mainAccount)
                     .replaceAll("<alt-account>", alt.altAccount)
-                    .replaceAll("<message-link>", alt.messageLink)}
-                  }`
+                    .replaceAll("<message-link>", alt.messageLink)}`
               )
               .join("\n")}`,
           });
