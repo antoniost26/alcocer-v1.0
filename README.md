@@ -73,16 +73,16 @@ alcocer-v1.0/
 
 1.  Create a `config.json` file in the root directory.
 
-2.  Populate it with your bot token and any necessary channel IDs.
+2.  Populate it with your configurations and any necessary channel IDs.
 
     ```json
     {
-      "token": "YOUR_DISCORD_BOT_TOKEN",
       "scammer_channel_id": "YOUR_SCAMMER_LIST_CHANNEL_ID",
       "alt_tracker_channel_id": "YOUR_ALT_TRACKER_CHANNEL_ID",
       "admin_role_id": "YOUR_ADMIN_ROLE_ID"
     }
     ```
+3. Create a copy of the .env template and include your own secrets (including your bot token).
 
 ### Running the Bot
 
